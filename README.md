@@ -1,6 +1,6 @@
-# microbrews
+# homebrew-patches
 
-My "taps" for Mac Homebrew
+My "taps" for Mac Homebrew formulae which have patches not accepted by mxcl/homebrew.
 
 ### Usage
 
@@ -14,5 +14,5 @@ Since these formulae will likely have collisions with standard mxcl/homebrew for
     brew install kevwil/patches/<formula>
 
 ### License
-    
+
 See [LICENSE](LICENSE) for details.

@@ -72,7 +72,7 @@ class Mutt < Formula
             # unpriviledged user)
             "--with-homespool=.mbox"]
     args << "--with-slang" if build.with? 's-lang'
-    args <> "--enable-gpgme" if build.with? 'gpgme'
+    args << "--enable-gpgme" if build.with? 'gpgme'
 
     if build.with? 'debug'
       args << "--enable-debug"

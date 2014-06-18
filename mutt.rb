@@ -3,7 +3,7 @@ require 'formula'
 class Mutt < Formula
   homepage 'http://www.mutt.org/'
   url 'ftp://ftp.mutt.org/mutt/mutt-1.5.23.tar.gz'
-  mirror 'https://bitbucket.org/mutt/mutt/downloads/mutt-1.5.23.tar.gz'
+  mirror 'https://fossies.org/linux/misc/mutt-1.5.23.tar.gz'
   sha1 '8ac821d8b1e25504a31bf5fda9c08d93a4acc862'
   revision 1
 
@@ -20,9 +20,6 @@ class Mutt < Formula
     resource 'html' do
       url 'http://dev.mutt.org/doc/manual.html', :using => :nounzip
     end
-
-    depends_on :autoconf
-    depends_on :automake
   end
 
   unless Tab.for_name('signing-party').used_options.include? 'with-rename-pgpring'
@@ -41,14 +38,17 @@ class Mutt < Formula
   option "with-pgp-verbose-mime-patch", "Apply PGP verbose mime patch"
   option "with-confirm-attachment-patch", "Apply confirm attachment patch"
 
+  depends_on "autoconf" => :build
+  depends_on "automake" => :build
+
   depends_on 'openssl'
   depends_on 'tokyo-cabinet'
   depends_on 's-lang' => :optional
   depends_on 'gpgme' => :optional
 
   patch do
-    url "http://patch-tracker.debian.org/patch/series/dl/mutt/1.5.21-6.2+deb7u1/features/trash-folder"
-    sha1 "6c8ce66021d89a063e67975a3730215c20cf2859"
+    url "ftp://ftp.openbsd.org/pub/OpenBSD/distfiles/mutt/trashfolder-1.5.22.diff0.gz"
+    sha1 "c597566c26e270b99c6f57e046512a663d2f415e"
   end if build.with? "trash-patch"
 
   patch do
@@ -99,11 +99,8 @@ class Mutt < Formula
       args << "--disable-debug"
     end
 
-    if build.head?
-      system "./prepare", *args
-    else
-      system "./configure", *args
-    end
+    
+    system "./prepare", *args
     system "make"
     system "make", "install"
 

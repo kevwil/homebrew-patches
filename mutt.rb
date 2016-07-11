@@ -41,7 +41,7 @@ class Mutt < Formula
 
   patch do
     url "http://ftp.openbsd.org/pub/OpenBSD/distfiles/mutt/trashfolder-1.6.0.diff.gz"
-    sha1 "b779c6df61a77f3069139aad8562b4a47c8eed8ab5b8f5681742a1c2eaa190b8"
+    sha256 "b779c6df61a77f3069139aad8562b4a47c8eed8ab5b8f5681742a1c2eaa190b8"
   end if build.with? "trash-patch"
 
   patch do
